@@ -24,4 +24,6 @@ runs:
         echo "RBK_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
         echo "RBK_REPOSITORY_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
         echo "RBK_REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-        echo "RBK_DOCKER_REGISTRY=https://dr2.rbkmoney.com/" >> $GITHUB_ENV
+        echo "RBK_DOCKER_REGISTRY=registry.hub.docker.com" >> $GITHUB_ENV
+
+    run: mvn -B clean compile package -Ddockerfile.registry=https://${RBK_DOCKER_REGISTRY}
