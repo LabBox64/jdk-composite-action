@@ -1,0 +1,26 @@
+name: 'Build jdk'
+description: 'Base build jdk action'
+inputs:
+  jdk-version:
+    description: 'The jdk version to use'
+    default: '15'
+    required: false
+  jdk-distribution:
+    description: 'The jdk distribution to use'
+    default: 'adopt'
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: ${{ inputs.jdk-version }}
+        distribution: ${{ inputs.jdk-distribution }}
+
+    - shell: bash
+      run: |
+        echo "RBK_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+        echo "RBK_REPOSITORY_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+        echo "RBK_REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
