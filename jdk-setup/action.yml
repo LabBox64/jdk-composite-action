@@ -16,7 +16,7 @@ outputs:
     value: ${{ steps.mvn-cache.outputs.cache-hit }}
 
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: set up JDK
       uses: actions/setup-java@v2
