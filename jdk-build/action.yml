@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
     - name: set up JDK
-      uses: ./jdk-setup
+      uses: LabBox64/jdk-composite-action/jdk-setup@v0.0.9
       with:
         java-version: ${{ inputs.jdk-version }}
         distribution: ${{ inputs.jdk-distribution }}

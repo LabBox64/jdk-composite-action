@@ -13,7 +13,7 @@ inputs:
 outputs:
   cache-hit:
     description: "Forward actions/cache cache-hit output"
-    value: ${{ steps.node-cache.outputs.cache-hit }}
+    value: ${{ steps.mvn-cache.outputs.cache-hit }}
 
 runs:
   using: "composite"
@@ -25,6 +25,7 @@ runs:
         distribution: ${{ inputs.jdk-distribution }}
 
     - name: Cache local Maven repository
+      id: mvn-cache
       uses: actions/cache@v2
       with:
         path: ~/.m2/repository
