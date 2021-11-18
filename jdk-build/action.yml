@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
     - name: set up JDK
-      uses: ../jdk-cache
+      uses: ./jdk-setup
       with:
         java-version: ${{ inputs.jdk-version }}
         distribution: ${{ inputs.jdk-distribution }}
